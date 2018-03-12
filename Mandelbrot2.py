@@ -13,8 +13,9 @@ def mandelbrot(c, max_iter):
     for n in range(max_iter):
         z = z * z + c
         if abs(z) > 2:
-            return n
+            return n 
     return max_iter
+#Wordt hiermee bedoelt: als je 80 terugkrijgt, dan zit het in de set, als je iets anders dan 80 krijgt dan niet
 
 def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, maxiter):
     """
@@ -34,7 +35,7 @@ def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, maxiter):
     lijst = []
     for r in r1:
         for i in r2:
-            lijst.append(mandelbrot(complex(r, i), maxiter))                     
+            lijst.append(mandelbrot(complex(r, i), maxiter)) #wat betekent ,maxiter? Is dat zo van, als return =maxiter?                
     return (r1, r2, lijst)
 
 
@@ -45,18 +46,18 @@ def plot(m_set):
     :return: None. Maar er verschijnt wel een venster met een plaatje.
     """
     r1,r2,lst = m_set
-    print r1
+    print r1 #waarom alleen r1?
     realAxisLen = len(r1)
     imaginaryAxisLen = len(r2)
     
-    # een 2 Dimensionaal array dat een Mandelbrotset representeert.
+    # een 2-dimensionale array die een Mandelbrotset representeert.
     rooster = np.empty((realAxisLen, imaginaryAxisLen))
 
     for x in xrange(realAxisLen):
         for y in xrange(imaginaryAxisLen):
-            rooster[x, y] = lst[x * realAxisLen + y]
+            rooster[x, y] = lst[x * realAxisLen + y] #Waarom alleen x*lengte en niet y*lengte
 
-    plt.imshow(rooster.T, interpolation="nearest")
+    plt.imshow(rooster.T, interpolation="nearest") #dit is blijkbaar hoe de kleuren erbij komen
     plt.show()
 
 # Hier wordt de grafische weergave van de Mandelbrotset gemaakt. Dit is het startpunt van het programma.                            
